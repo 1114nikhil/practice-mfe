@@ -1,0 +1,4 @@
+{
+  "authMfe": "http://localhost:4300/remoteEntry.js",
+  "dashboardMfe": "http://localhost:4400/remoteEntry.js"
+}
