@@ -1,1 +1,7 @@
-module.exports = {};
+module.exports = {
+  devServer: {
+    historyApiFallback: {
+      disableDotRule: true,   // ⭐ REQUIRED
+    }
+  }
+};

@@ -19,5 +19,5 @@ export const routes: Routes = [
       }).then(m => m.dashboardRoutes)
   },
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
