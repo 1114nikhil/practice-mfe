@@ -1,277 +1,285 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "shell": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/shell",
-      "sourceRoot": "projects/shell/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "outputPath": "dist/shell",               
-    "index": "projects/shell/src/index.html", 
-           "customWebpackConfig": {
-  "path": "projects/shell/webpack.config.js",
-  "devServerConfig": "projects/shell/webpack.dev.config.js"
-},
-            "main": "projects/shell/src/main.ts",
-            "tsConfig": "projects/shell/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/shell/public"
-              }
-            ],
-            "styles": [
-              "projects/shell/src/styles.scss"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "shell:build"
-            },
-            "development": {
-              "buildTarget": "shell:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/shell/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/shell/public"
-              }
-            ],
-            "styles": [
-              "projects/shell/src/styles.scss"
-            ]
-          }
-        }
-      }
-    },
-    "auth-mfe": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/auth-mfe",
-      "sourceRoot": "projects/auth-mfe/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-         "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "outputPath": "dist/auth-mfe",               
-    "index": "projects/auth-mfe/src/index.html", 
-            "customWebpackConfig": {
-  "path": "projects/auth-mfe/webpack.config.js",
-  "devServerConfig": "projects/auth-mfe/webpack.dev.config.js"
-},
-            "main": "projects/auth-mfe/src/main.ts",
-            "tsConfig": "projects/auth-mfe/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/auth-mfe/public"
-              }
-            ],
-            "styles": [
-              "projects/auth-mfe/src/styles.scss"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "auth-mfe:build:production"
-            },
-            "development": {
-              "buildTarget": "auth-mfe:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/auth-mfe/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/auth-mfe/public"
-              }
-            ],
-            "styles": [
-              "projects/auth-mfe/src/styles.scss"
-            ]
-          }
-        }
-      }
-    },
-    "dashboard-mfe": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/dashboard-mfe",
-      "sourceRoot": "projects/dashboard-mfe/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "outputPath": "dist/dashboard-mfe",               
-    "index": "projects/dashboard-mfe/src/index.html", 
-            "customWebpackConfig": {
-  "path": "projects/dashboard-mfe/webpack.config.js",
-  "devServerConfig": "projects/dashboard-mfe/webpack.dev.config.js"
-},
-            "main": "projects/dashboard-mfe/src/main.ts",
-            "tsConfig": "projects/dashboard-mfe/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/dashboard-mfe/public"
-              }
-            ],
-            "styles": [
-              "projects/dashboard-mfe/src/styles.scss"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "dashboard-mfe:build:production"
-            },
-            "development": {
-              "buildTarget": "dashboard-mfe:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/dashboard-mfe/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/dashboard-mfe/public"
-              }
-            ],
-            "styles": [
-              "projects/dashboard-mfe/src/styles.scss"
-            ]
-          }
-        }
-      }
-    }
-  }
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"shell": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/shell",
+			"sourceRoot": "projects/shell/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/shell",
+						"index": "projects/shell/src/index.html",
+						"main": "projects/shell/src/main.ts",
+						"tsConfig": "projects/shell/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/shell/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/shell/src/styles.scss"
+						],
+						"extraWebpackConfig": "projects/shell/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "shell:build",
+							"extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "shell:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/shell/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/shell/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/shell/public"
+							}
+						],
+						"styles": [
+							"projects/shell/src/styles.scss"
+						]
+					}
+				}
+			}
+		},
+		"auth-mfe": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/auth-mfe",
+			"sourceRoot": "projects/auth-mfe/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-builders/custom-webpack:browser",
+					"options": {
+						"outputPath": "dist/auth-mfe",
+						"index": "projects/auth-mfe/src/index.html",
+						"main": "projects/auth-mfe/src/main.ts",
+						"tsConfig": "projects/auth-mfe/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/auth-mfe/public"
+							}
+						],
+						"styles": [
+							"projects/auth-mfe/src/styles.scss"
+						]
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-builders/custom-webpack:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "auth-mfe:build:production"
+						},
+						"development": {
+							"buildTarget": "auth-mfe:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/auth-mfe/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/auth-mfe/public"
+							}
+						],
+						"styles": [
+							"projects/auth-mfe/src/styles.scss"
+						]
+					}
+				}
+			}
+		},
+		"dashboard-mfe": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/dashboard-mfe",
+			"sourceRoot": "projects/dashboard-mfe/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/dashboard-mfe",
+						"index": "projects/dashboard-mfe/src/index.html",
+						"main": "projects/dashboard-mfe/src/main.ts",
+						"tsConfig": "projects/dashboard-mfe/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/dashboard-mfe/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/dashboard-mfe/src/styles.scss"
+						],
+						"extraWebpackConfig": "projects/dashboard-mfe/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/dashboard-mfe/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "dashboard-mfe:build:production",
+							"extraWebpackConfig": "projects/dashboard-mfe/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "dashboard-mfe:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4400,
+						"publicHost": "http://localhost:4400",
+						"extraWebpackConfig": "projects/dashboard-mfe/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/dashboard-mfe/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/dashboard-mfe/public"
+							}
+						],
+						"styles": [
+							"projects/dashboard-mfe/src/styles.scss"
+						]
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,12 +1,13 @@
-import { Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-    {
+  {
     path: 'auth',
     loadChildren: () =>
       loadRemoteModule({
-        remoteName: 'authMfe',
+        type:'module',
+        remoteEntry:'http://localhost:4300/remoteEntry.js',
         exposedModule: './AuthRoutes'
       }).then(m => m.authRoutes)
   },
@@ -14,10 +15,9 @@ export const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       loadRemoteModule({
-        remoteName: 'dashboardMfe',
+        type:'module',
+        remoteEntry:'http://localhost:4400/remoteEntry.js',
         exposedModule: './DashboardRoutes'
       }).then(m => m.dashboardRoutes)
-  },
-
-  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  }
 ];
