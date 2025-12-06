@@ -5,11 +5,11 @@ module.exports = withModuleFederationPlugin({
   name: 'dashboard-mfe',
 
   exposes: {
-    './Component': './projects/dashboard-mfe/src/app/app.ts',
+    './DashboardRoutes': './projects/dashboard-mfe/src/app/app.routes.ts',
   },
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
-
+  
 });

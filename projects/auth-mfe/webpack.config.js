@@ -5,7 +5,7 @@ module.exports = withModuleFederationPlugin({
   name: 'auth-mfe',
 
   exposes: {
-    './Component': './projects/auth-mfe/src/app/app.ts',
+    './Component': './projects/auth-mfe/src/app/auth/auth.routes.ts',
   },
 
   shared: {

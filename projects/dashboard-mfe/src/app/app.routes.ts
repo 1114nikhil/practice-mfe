@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { App } from './app';
 
-export const routes: Routes = [
+export const dashboardRoutes: Routes = [
      { path: '', component: App },
      // { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

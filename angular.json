@@ -100,91 +100,104 @@
 			}
 		},
 		"auth-mfe": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				}
-			},
-			"root": "projects/auth-mfe",
-			"sourceRoot": "projects/auth-mfe/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "@angular-builders/custom-webpack:browser",
-					"options": {
-						"outputPath": "dist/auth-mfe",
-						"index": "projects/auth-mfe/src/index.html",
-						"main": "projects/auth-mfe/src/main.ts",
-						"tsConfig": "projects/auth-mfe/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "projects/auth-mfe/public"
-							}
-						],
-						"styles": [
-							"projects/auth-mfe/src/styles.scss"
-						]
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kB",
-									"maximumError": "1MB"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "4kB",
-									"maximumError": "8kB"
-								}
-							],
-							"outputHashing": "all"
-						},
-						"development": {
-							"optimization": false,
-							"extractLicenses": false,
-							"sourceMap": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "@angular-builders/custom-webpack:dev-server",
-					"configurations": {
-						"production": {
-							"buildTarget": "auth-mfe:build:production"
-						},
-						"development": {
-							"buildTarget": "auth-mfe:build:development"
-						}
-					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular/build:extract-i18n"
-				},
-				"test": {
-					"builder": "@angular/build:karma",
-					"options": {
-						"tsConfig": "projects/auth-mfe/tsconfig.spec.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "projects/auth-mfe/public"
-							}
-						],
-						"styles": [
-							"projects/auth-mfe/src/styles.scss"
-						]
-					}
-				}
-			}
-		},
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "root": "projects/auth-mfe",
+  "sourceRoot": "projects/auth-mfe/src",
+  "prefix": "app",
+  "architect": {
+    "build": {
+      "builder": "ngx-build-plus:browser",
+      "options": {
+        "outputPath": "dist/auth-mfe",
+        "index": "projects/auth-mfe/src/index.html",
+        "main": "projects/auth-mfe/src/main.ts",
+        "tsConfig": "projects/auth-mfe/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "projects/auth-mfe/public",
+            "output": "."
+          }
+        ],
+        "styles": [
+          "projects/auth-mfe/src/styles.scss"
+        ],
+        "extraWebpackConfig": "projects/auth-mfe/webpack.config.js",
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all",
+          "extraWebpackConfig": "projects/auth-mfe/webpack.prod.config.js"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+
+    "serve": {
+      "builder": "ngx-build-plus:dev-server",
+      "options": {
+        "port": 4300,
+        "publicHost": "http://localhost:4300",
+        "extraWebpackConfig": "projects/auth-mfe/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "auth-mfe:build:production",
+          "extraWebpackConfig": "projects/auth-mfe/webpack.prod.config.js"
+        },
+        "development": {
+          "buildTarget": "auth-mfe:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+
+    "extract-i18n": {
+      "builder": "@angular/build:extract-i18n"
+    },
+    "test": {
+      "builder": "@angular/build:karma",
+      "options": {
+        "tsConfig": "projects/auth-mfe/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "projects/auth-mfe/public"
+          }
+        ],
+        "styles": [
+          "projects/auth-mfe/src/styles.scss"
+        ]
+      }
+    }
+  }
+},
+
 		"dashboard-mfe": {
 			"projectType": "application",
 			"schematics": {
